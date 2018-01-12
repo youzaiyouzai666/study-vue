@@ -12,15 +12,7 @@
             <input id="toggle-all" class="toggle-all" type="checkbox">
             <label for="toggle-all">Mark all as complete</label>
             <ul class="todo-list">
-                <li v-for="todo in todoList" :class="{completed: todo.completed, editing: todo.editing}">
-                    <div class="view">
-                        <input class="toggle" type="checkbox" v-model="todo.completed">
-                        <label @dblclick="editTodo(todo)">{{todo.label}}</label>
-                        <button class="destroy" @click="removeTodo(todo)"></button>
-                    </div>
-                    <input class="edit" v-model="todo.label" v-auto-focus="todo.editing" @keyup.enter="finishEdit(todo)"
-                           @blur="finishEdit(todo)" @keyup.esc="cancelEdit(todo)">
-                </li>
+                <todo v-for="(todo,index) in filteredTodos" :key="index" :todo="todo" @remove="removeTodo" ></todo>
             </ul>
         </section>
         <!-- footer -->
@@ -76,13 +68,7 @@
                 visibility: 'all'
             }
         },
-        directives: {
-            'auto-focus': function (el, binding) {
-                if (binding.value) {
-                    el.focus();
-                }
-            }
-        },
+
         computed  : {
             filteredTodos: function () {
                 return filters[this.visibility](this.todoList);
@@ -111,26 +97,15 @@
                     this.newTodo = '';
                 }
             },
-            removeTodo     : function (todo) {
-                var index = this.todoList.indexOf(todo);
-                this.todoList.splice(index, 1);
-            },
-            editTodo       : function (todo) {
-                this.editingTodoOldValue = todo.label;
-                todo.editing             = true;
-            },
-            finishEdit     : function (todo) {
-                if (!todo.editing) {
-                    return;
-                }
-                todo.editing = false;
-                if (!todo.label) {
-                    this.removeTodo(todo);
-                }
-            },
+
+
             cancelEdit     : function (todo) {
                 todo.editing = false;
                 todo.label   = this.editingTodoOldValue;
+            },
+            removeTodo     : function (todo) {
+                var index = this.todoList.indexOf(todo);
+                this.todoList.splice(index, 1);
             },
             /**
              * 删除所有 completed
