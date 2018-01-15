@@ -98,11 +98,6 @@
                 }
             },
 
-
-            cancelEdit     : function (todo) {
-                todo.editing = false;
-                todo.label   = this.editingTodoOldValue;
-            },
             removeTodo     : function (todo) {
                 var index = this.todoList.indexOf(todo);
                 this.todoList.splice(index, 1);

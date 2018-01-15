@@ -27,19 +27,25 @@
             }
         },
         methods:{
-
+            //编辑
             editTodo       : function (todo) {
                 this.editingTodoOldValue = todo.label;
                 this.editing             = true;
             },
+            //完成编辑
             finishEdit     : function (todo) {
                 if (!this.editing) {
                     return;
                 }
                 this.editing = false;
                 if (!todo.label) {
-                    this.removeTodo(todo);
+                    this.$emit('remove',todo);
                 }
+            },
+            //取消编辑
+            cancelEdit     : function (todo) {
+                todo.editing = false;
+                todo.label   = this.editingTodoOldValue;
             },
         }
     }
