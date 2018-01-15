@@ -1,11 +1,11 @@
 <template>
-    <li :class="{completed: todo.completed, editing: todo.editing}">
+    <li :class="{completed: todo.completed, editing: editing}">
         <div class="view">
             <input class="toggle" type="checkbox" v-model="todo.completed">
             <label @dblclick="editTodo(todo)">{{todo.label}}</label>
             <button class="destroy" @click="$emit('remove',todo)"></button>
         </div>
-        <input class="edit" v-model="todo.label" v-auto-focus="todo.editing" @keyup.enter="finishEdit(todo)"
+        <input class="edit" v-model="todo.label" v-auto-focus="editing" @keyup.enter="finishEdit(todo)"
                @blur="finishEdit(todo)" @keyup.esc="cancelEdit(todo)">
     </li>
 </template>
@@ -14,6 +14,11 @@
     export  default {
         name:'Todo',
         props: ['todo'],
+        data(){
+          return{
+              editing:false
+          }
+        },
         directives: {
             'auto-focus': function (el, binding) {
                 if (binding.value) {
@@ -25,13 +30,13 @@
 
             editTodo       : function (todo) {
                 this.editingTodoOldValue = todo.label;
-                todo.editing             = true;
+                this.editing             = true;
             },
             finishEdit     : function (todo) {
-                if (!todo.editing) {
+                if (!this.editing) {
                     return;
                 }
-                todo.editing = false;
+                this.editing = false;
                 if (!todo.label) {
                     this.removeTodo(todo);
                 }
