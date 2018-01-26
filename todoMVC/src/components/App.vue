@@ -43,6 +43,7 @@
 <script>
     import Todo from './Todo.vue';
 
+
     const filters = {
         all      : function (todos) {
             return todos;
@@ -63,13 +64,15 @@
         components: {Todo},
         data() {
             return {
-                todoList  : [],
                 newTodo   : '',
                 visibility: 'all'
             }
         },
 
         computed  : {
+            todoList(){
+               return this.$store.state.todos
+            },
             filteredTodos: function () {
                 return filters[this.visibility](this.todoList);
             },
@@ -92,14 +95,15 @@
         methods   : {
             addTodo        : function () {
                 if (this.newTodo) {
-                    var todo = this.newTodo.trim();
-                    this.todoList.push({label: todo, completed: false, editing: false});
+                    let text = this.newTodo.trim();
+//                    this.todoList.push({label: text, completed: false, editing: false});
+                    this.$store.commit('addTodo',{text});
                     this.newTodo = '';
                 }
             },
 
             removeTodo     : function (todo) {
-                var index = this.todoList.indexOf(todo);
+                let index = this.todoList.indexOf(todo);
                 this.todoList.splice(index, 1);
             },
             /**
