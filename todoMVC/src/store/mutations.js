@@ -1,7 +1,7 @@
-// const STORAGE_KEY = 'todos-vuexjs';
+export const STORAGE_KEY = 'todos-vuexjs';
 
 export const state = {
-    todos:[]
+    todos:JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
 };
 
 export const mutations = {
