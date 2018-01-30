@@ -6,7 +6,5 @@ Vue.config.productionTip = false;//关闭生产提示
 new Vue({
     el: '#app',
     store,
-    components: { App },//注册指令
-    template: '<App/>',
-
+    render: (h)=>h(App)
 });

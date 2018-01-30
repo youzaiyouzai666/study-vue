@@ -69,7 +69,7 @@
             }
         },
 
-        computed  : {
+        computed  :  {
             todoList(){
                return this.$store.state.todos
             },
