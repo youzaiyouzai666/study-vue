@@ -9,7 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     actions,
     modules: {
-        cart,
+        cart:cart,
         products
     }
 })
