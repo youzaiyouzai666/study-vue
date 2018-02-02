@@ -4,7 +4,7 @@ const state = {
     all:[]
 };
 const getters = {
-    allProducts: state => state.all
+    allProducts: state => state.all,
 };
 const actions = {
     getAllProducts ({ commit }) {

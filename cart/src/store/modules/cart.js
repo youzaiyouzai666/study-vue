@@ -25,7 +25,8 @@ const getters = {
         }, 0)
     }
 };
-const actions = {};
+const actions = {
+};
 const mutations = {
     [types.ADD_TO_CART] (state, {id}){
         state.checkoutStatus = null;
