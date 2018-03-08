@@ -8,7 +8,7 @@ const UserSettingsNav = {
             `
 }
 const UserSettings = {
-    template: `
+        template: `
             <div class="us">
             <h2>User Settings</h2>
             <UserSettingsNav/>
