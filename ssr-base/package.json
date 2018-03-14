@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build-c": "webpack --config webpack/webpack.client.js",
-    "start": "npm run build-c && node server.js"
+    "build-s": "webpack --config webpack/webpack.server.js",
+    "build":"npm run build-c && npm run build-s",
+    "start": "npm run build && node server.js"
   },
   "keywords": [],
   "author": "",
