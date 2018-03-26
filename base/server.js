@@ -1,6 +1,8 @@
 /**
  * Created by CAOYI on 2018/1/8.
  */
+const path = require('path');
+
 const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -21,9 +23,9 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname,'dist')));
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3004
 module.exports = app.listen(port, () => {
     console.log(`Server listening on http://localhost:${port}, Ctrl+C to stop`)
 })

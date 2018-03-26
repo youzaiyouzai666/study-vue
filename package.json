@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/youzaiyouzai666/study-vue/issues"
   },
-  "homepage": "https://github.com/youzaiyouzai666/study-vue#readme"
+  "homepage": "https://github.com/youzaiyouzai666/study-vue#readme",
+  "devDependencies": {
+    "css-loader": "^0.28.11",
+    "element-ui": "^2.2.2",
+    "style-loader": "^0.20.3",
+    "vue-router": "^3.0.1",
+    "vue-svg-icon": "^1.2.9"
+  }
 }
