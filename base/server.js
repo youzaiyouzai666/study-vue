@@ -12,8 +12,9 @@ const WebpackConfig = require('./webpack.config');
 const app = express();
 const compiler = webpack(WebpackConfig);
 
+console.log('WebpackConfig.output.publicPath,',WebpackConfig.output.publicPath);
 app.use(webpackDevMiddleware(compiler, {
-    publicPath: '/dist/',
+    publicPath: WebpackConfig.output.publicPath,
     //控制输出
     stats: {
         colors: true,
@@ -23,7 +24,7 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-app.use(express.static(path.join(__dirname,'dist')));
+// app.use(express.static(path.join(__dirname,'dist')));
 
 const port = process.env.PORT || 3004
 module.exports = app.listen(port, () => {

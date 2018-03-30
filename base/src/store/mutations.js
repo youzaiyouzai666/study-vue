@@ -1,15 +1,17 @@
-export const STORAGE_KEY = 'todos-vuexjs';
-
-export const state = {
-    todos:JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
-};
-
-export const mutations = {
-    addTodo(state, {text}) {
-        state.todos.push({label: text, completed: false, editing: false})
+export default {
+    addArticleLists(state, articleLists) {
+        state.articleLists = articleLists
     },
-    removeTodo(state, {todo}) {
-        let index = state.todos.indexOf(todo);
-        state.todos.splice(index, 1);
+    addArticleNumber(state) {
+        state.articleNumber += 10
+    },
+    addArticle(state, article) {
+        state.article = article
+    },
+    addArticleAuthor(state, loginName) {
+        state.articleAuthor = loginName
+    },
+    addUserInfo(state, userInfo) {
+        state.userInfo = userInfo
     }
-};
+}

@@ -4,19 +4,26 @@ const webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     entry  : {
         app: path.join(__dirname, 'src', 'app.js')
     },
     output : {
         path      : path.join(__dirname, 'dist'),
         filename  : '[name].js',
-        publicPath: './'
+        publicPath: '/'
     },
     module : {
         rules: [
             {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-            {test: /\.vue$/, loader: 'vue-loader'}
+            {test: /\.vue$/, loader: 'vue-loader'},
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                }
+            },
         ]
     },
     plugins: [
@@ -36,5 +43,5 @@ module.exports = {
 };
 
 function resolveSrc(dir) {
-    return path.join(__dirname,  dir)
+    return path.join(__dirname, dir)
 }

@@ -1,5 +1,5 @@
 {
-  "name": "todoMVC",
+  "name": "vue-base",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,8 +18,10 @@
     "css-loader": "^0.28.8",
     "express": "^4.16.2",
     "html-webpack-plugin": "^3.1.0",
+    "url-loader": "^1.0.1",
     "vue": "^2.5.13",
     "vue-loader": "^13.6.2",
+    "vue-svg-icon": "^1.2.9",
     "vue-template-compiler": "^2.5.13",
     "vuex": "^3.0.1",
     "webpack": "^3.10.0",
